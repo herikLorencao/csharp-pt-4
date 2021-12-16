@@ -12,12 +12,19 @@ namespace ByteBank
         {
             try
             {
-                Metodo();
+                //Metodo();
+                ContaCorrente contaCorrente = new ContaCorrente(0, 0);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine("Parâmetro inválido: " + ex.ParamName);
+                Console.WriteLine(ex.Message);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+
             Console.ReadLine();
         }
 
@@ -35,6 +42,8 @@ namespace ByteBank
             catch (DivideByZeroException e)
             {
                 Console.WriteLine(e.Message);
+                // seria o mesmo que throw e;
+                throw;
             }
         }
 
