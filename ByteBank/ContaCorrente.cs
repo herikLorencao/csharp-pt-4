@@ -10,23 +10,9 @@ namespace ByteBank
 
 
         private int _agencia;
-        public int Agencia
-        {
-            get
-            {
-                return _agencia;
-            }
-            set
-            {
-                if (value <= 0)
-                {
-                    return;
-                }
-
-                _agencia = value;
-            }
-        }
-        public int Numero { get; set; }
+        // poderia ser public readonly int _agencia;
+        public int Agencia { get; }
+        public int Numero { get; }
 
         private double _saldo = 100;
 
