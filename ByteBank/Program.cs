@@ -13,7 +13,15 @@ namespace ByteBank
             try
             {
                 //Metodo();
-                ContaCorrente contaCorrente = new ContaCorrente(0, 0);
+                ContaCorrente contaCorrente = new ContaCorrente(100, 229595);
+                ContaCorrente contaCorrente2 = new ContaCorrente(1000, 12345);
+
+                contaCorrente.Transferir(100, contaCorrente2);
+                //contaCorrente.Sacar(200);
+            }
+            catch (SaldoInsuficienteException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             catch (ArgumentException ex)
             {
@@ -42,7 +50,8 @@ namespace ByteBank
             catch (DivideByZeroException e)
             {
                 Console.WriteLine(e.Message);
-                // seria o mesmo que throw e;
+                // no caso o throw vazio mantem a stacktrace
+                // se for feito um throw e a stacktrace iniciara a partir daqui
                 throw;
             }
         }
