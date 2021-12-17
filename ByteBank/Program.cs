@@ -10,30 +10,31 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
+
+
+            Console.WriteLine("Fim da execução do programa. Tecle enter para continuar ...");
+            Console.ReadLine();
+        }
+
+        private static void TestaInnerException()
+        {
             try
             {
-                //Metodo();
-                ContaCorrente contaCorrente = new ContaCorrente(100, 229595);
-                ContaCorrente contaCorrente2 = new ContaCorrente(1000, 12345);
+                ContaCorrente contaCorrente = new ContaCorrente(4567, 439603);
+                ContaCorrente contaCorrente1 = new ContaCorrente(3567, 346723);
 
-                contaCorrente.Transferir(100, contaCorrente2);
-                //contaCorrente.Sacar(200);
+                contaCorrente1.Transferir(10000, contaCorrente);
             }
-            catch (SaldoInsuficienteException ex)
+            catch (OperacaoFinanceiraException e)
             {
-                Console.WriteLine(ex.Message);
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine("Parâmetro inválido: " + ex.ParamName);
-                Console.WriteLine(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
 
-            Console.ReadLine();
+                Console.WriteLine("Informações da INNER EXCEPTION (exceção interna):");
+
+                Console.WriteLine(e.InnerException.Message);
+                Console.WriteLine(e.InnerException.StackTrace);
+            }
         }
 
         private static void Metodo()
