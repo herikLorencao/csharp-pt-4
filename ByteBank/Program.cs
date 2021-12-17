@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,39 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-
+            TestaLeituraArquivo();
 
             Console.WriteLine("Fim da execução do programa. Tecle enter para continuar ...");
             Console.ReadLine();
+        }
+
+        private static void TestaLeituraArquivo()
+        {
+            // Faz a mesma coisa que o bloco try / catch e finaliza o recurso
+            // Necessário implementar IDisposable (se usar try / catch) ele fecha o recurso automaticamente também
+
+            using (LeitorArquivos leitorArquivos = new LeitorArquivos("conta.txt"))
+            {
+                leitorArquivos.LerLinha();
+            }
+
+            // LeitorArquivos leitorArquivos = null;
+            //try
+            //{
+            //    leitorArquivos = new LeitorArquivos("conta.txt");
+            //    leitorArquivos.LerLinha();
+            //    leitorArquivos.LerLinha();
+            //    leitorArquivos.LerLinha();
+            //}
+            //catch (IOException ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+            //finally
+            //{
+            //    if (leitorArquivos != null)
+            //        leitorArquivos.Fechar();
+            //}
         }
 
         private static void TestaInnerException()
